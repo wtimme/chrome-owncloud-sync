@@ -5,17 +5,23 @@
 var ownCloudBookmarkServer = (function () {
     var that = this;
 
-    that.useSSL = function () {
-        var useSSL = true;
+    that.host = "";
+    that.useSecureConnection = true;
 
-        if (useSSL) {
+    that.init = function (host, useSecureConnection) {
+        that.host = host;
+        that.useSecureConnection = true === useSecureConnection;
+    };
+
+    that.useSSL = function () {
+        if (that.useSecureConnection) {
             console.log('Using SSL for connection.');
         }
         else {
             console.warn('Warning: Using unsafe connection. (SSL is highly recommended!)')
         }
 
-        return useSSL;
+        return that.useSecureConnection;
     };
 
     that.getProtocol = function () {
@@ -25,9 +31,7 @@ var ownCloudBookmarkServer = (function () {
     };
 
     that.getHost = function () {
-        var host = '<owncloud-host-should-go-here>';
-
-        return host;
+        return that.host;
     };
 
     that.getOwnCloudUrlWithPath = function (path) {
@@ -231,6 +235,7 @@ var ownCloudBookmarkServer = (function () {
     };
 
     return {
+        init                    : that.init,
         loginWithCredentials    : that.loginWithCredentials,
         logout                  : that.logout,
         addBookmark             : that.addBookmark,

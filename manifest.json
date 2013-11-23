@@ -1,16 +1,27 @@
 {
-  "name": "ownCloud Sync",
-  "version": "1.0",
-  "description": "Syncs Chrome with your ownCloud installation.",
-  "permissions": [
-    "bookmarks"
-  ],
-  "browser_action": {
-      "default_title": "My Bookmarks.",
-      "default_icon": "icon.png",
-      "default_popup": "popup.html"
-  },
+  "name": "ownCloud Bookmarks",
+  "version": "0.0.1",
   "manifest_version": 2,
-  "content_security_policy": "script-src 'self'; object-src 'self'",
-  "permissions": [ "http://*/*", "https://*/*" ]
+  "description": "Sync your Chrome bookmarks with your ownCloud installation. All bookmarks, everywhere - in your own cloud.",
+  "homepage_url": "http://github.com/wtimme",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "options_page": "src/options_custom/index.html",
+  "browser_action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "browser action demo",
+    "default_popup": "src/browser_action/browser_action.html"
+  },
+  "permissions": [
+    "bookmarks",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "omnibox": {
+    "keyword": "oc"
+  }
 }
